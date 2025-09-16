@@ -1,0 +1,20 @@
+[package]
+name = "vaporpay"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+clap = { version = "4.4", features = ["derive"] }
+chrono = { version = "0.4", features = ["clock"] }
+serde = { version = "1.0", features = ["derive"] }
+tokio = { version = "1.33", features = ["full"] }
+ethers = "2.0"
+rand = "0.8"
+sha3 = "0.10"
+hex = "0.4"
+serde_json = "1.0"
+dotenv = "0.15"
+anyhow = "1.0"
+qrcode = "0.7"
+image = "0.24"
