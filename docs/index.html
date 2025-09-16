@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <title>VaporPay</title>
-    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
 
     <!-- Vaporwave Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Monoton&display=swap" rel="stylesheet">
 
     <style>
-        /* Vaporwave background */
         body {
             margin: 0;
             padding: 2rem;
@@ -84,7 +82,7 @@
 
 <body>
 <img src="logo.svg" class="logo" alt="VaporPay Logo" />
-<h1>💨 VaporPay </h1>
+<h1>💨 VaporPay</h1>
 
 <div id="wallet-section">
     <button onclick="connectWallet()">🔗 Connect Wallet</button>
@@ -94,6 +92,10 @@
 <div id="network"></div>
 <div id="details"></div>
 
+<!-- Load ethers.js -->
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
+
+<!-- Your logic starts AFTER ethers is loaded -->
 <script>
     let provider, signer, account;
 
@@ -121,6 +123,7 @@
             document.getElementById("status").textContent = "❌ Please install MetaMask.";
             return;
         }
+
         try {
             provider = new ethers.providers.Web3Provider(window.ethereum);
             await provider.send("eth_requestAccounts", []);
@@ -151,7 +154,7 @@
 
             document.getElementById("wallet-section").innerHTML =
                 `<button onclick="redeem()">✅ Redeem</button>
-                     <button onclick="refund()">↩️ Refund</button>`;
+           <button onclick="refund()">↩️ Refund</button>`;
         } catch (err) {
             console.error(err);
             document.getElementById("status").textContent = "❌ Could not connect: " + err.message;
@@ -164,7 +167,6 @@
                 "function commitments(bytes32) view returns (address depositor, address token, uint256 amount, uint256 expiry, bool refundable)"
             ];
             const contract = new ethers.Contract(contractAddress, abi, provider);
-
             const commitment = getCommitment();
             const c = await contract.commitments(commitment);
 
@@ -192,13 +194,13 @@
             const refundable = c.refundable ? "Yes" : "No";
 
             document.getElementById("details").innerHTML = `
-                    <div>
-                        <h3>🎟️ Voucher Details</h3>
-                        <p>💰 Amount: <b>${amountReadable} ${tokenLabel}</b></p>
-                        <p>⏳ Expiry: <b>${expiryDate}</b></p>
-                        <p>🔄 Refundable: <b>${refundable}</b></p>
-                    </div>
-                `;
+          <div>
+            <h3>🎟️ Voucher Details</h3>
+            <p>💰 Amount: <b>${amountReadable} ${tokenLabel}</b></p>
+            <p>⏳ Expiry: <b>${expiryDate}</b></p>
+            <p>🔄 Refundable: <b>${refundable}</b></p>
+          </div>
+        `;
         } catch (err) {
             console.error(err);
             document.getElementById("details").textContent = "❌ Could not load voucher details: " + err.message;
@@ -213,11 +215,9 @@
             const contract = new ethers.Contract(contractAddress, abi, signer);
 
             const tx = await contract.redeem(secret, salt, account);
-            document.getElementById("status").textContent =
-                "📤 Redeeming... " + tx.hash;
+            document.getElementById("status").textContent = "📤 Redeeming... " + tx.hash;
             await tx.wait();
-            document.getElementById("status").textContent =
-                "✅ Redeemed successfully! " + tx.hash;
+            document.getElementById("status").textContent = "✅ Redeemed successfully! " + tx.hash;
         } catch (err) {
             console.error(err);
             document.getElementById("status").textContent = "❌ Redeem failed: " + err.message;
@@ -232,11 +232,9 @@
             const contract = new ethers.Contract(contractAddress, abi, signer);
 
             const tx = await contract.refund(secret, salt);
-            document.getElementById("status").textContent =
-                "📤 Refunding... " + tx.hash;
+            document.getElementById("status").textContent = "📤 Refunding... " + tx.hash;
             await tx.wait();
-            document.getElementById("status").textContent =
-                "✅ Refunded successfully! " + tx.hash;
+            document.getElementById("status").textContent = "✅ Refunded successfully! " + tx.hash;
         } catch (err) {
             console.error(err);
             document.getElementById("status").textContent = "❌ Refund failed: " + err.message;

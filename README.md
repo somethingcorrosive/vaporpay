@@ -45,6 +45,8 @@ The page:
 ### Rust CLI (friendly)
 Install [Rust](https://www.rust-lang.org/) and clone this repo:
 
+Change directory to vapropay, this directory is where you will run all commands listed below with cargo.
+
 ```bash
 cargo run -- create \
   --amount 0.1 \
