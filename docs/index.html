@@ -7,6 +7,9 @@
     <!-- Vaporwave Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Monoton&display=swap" rel="stylesheet">
 
+    <!-- Correct ethers.js UMD build -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js" defer></script>
+
     <style>
         body {
             margin: 0;
@@ -92,11 +95,7 @@
 <div id="network"></div>
 <div id="details"></div>
 
-<!-- Load ethers.js -->
-<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
-
-<!-- Your logic starts AFTER ethers is loaded -->
-<script>
+<script defer>
     let provider, signer, account;
 
     const CONTRACTS = {
