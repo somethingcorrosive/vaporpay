@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="120" viewBox="0 0 400 120">
+    <defs>
+        <linearGradient id="vp-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff8bd7" />
+            <stop offset="100%" stop-color="#8be9ff" />
+        </linearGradient>
+    </defs>
+    <rect width="400" height="120" rx="20" fill="url(#vp-gradient)" />
+    <text
+            x="50%"
+            y="55%"
+            dominant-baseline="middle"
+            text-anchor="middle"
+            font-family="Verdana, Geneva, sans-serif"
+            font-size="48"
+            font-weight="bold"
+            fill="white"
+            style="paint-order: stroke; stroke: #000; stroke-width: 3px;"
+    >
+        VaporPay
+    </text>
+</svg>
