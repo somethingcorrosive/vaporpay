@@ -451,7 +451,7 @@ fn generate_qr(secret: &str, salt: &str, contract: &str) -> anyhow::Result<()> {
         secret, salt, contract
     );
 
-    println!("\n🔗 Redeem URL: {}", url);
+    println!("\nRedeem URL: {}", url);
 
     // ASCII QR in terminal
     let code = QrCode::new(url.as_bytes()).map_err(|e| anyhow::anyhow!(e))?;
@@ -460,7 +460,7 @@ fn generate_qr(secret: &str, salt: &str, contract: &str) -> anyhow::Result<()> {
         .quiet_zone(true)
         .module_dimensions(2, 1)
         .build();
-    println!("\n📱 QR Code (ASCII):\n{}", string);
+    println!("\nQR Code (ASCII):\n{}", string);
 
     // PNG QR
     let scale = 10;
