@@ -447,7 +447,7 @@ fn encode_deposit_eth(commitment: H256, expiry: u64, refundable: bool) -> Bytes 
 // Generate QR code (ASCII + PNG)
 fn generate_qr(secret: &str, salt: &str, contract: &str) -> anyhow::Result<()> {
     let url = format!(
-        "https://somethingcorrosive.github.io/vaporpay/redeem?secret={}&salt={}&contract={}",
+        "https://somethingcorrosive.github.io/vaporpay/?secret={}&salt={}&contract={}",
         secret, salt, contract
     );
 
