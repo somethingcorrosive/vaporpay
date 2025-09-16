@@ -28,7 +28,7 @@ It uses hash-time-locked commitments (HTLCs) to let anyone create a voucher (ETH
 
 Try the redeem/refund dApp (works with MetaMask):
 
- [VaporPay Redeem (GitHub Pages)](https://somethingcorrosive.github.io/vaporpay-redeem/)
+ [VaporPay Redeem (GitHub Pages)](https://somethingcorrosive.github.io/vaporpay/)
 
 Paste in a QR-generated link like:
 
@@ -58,11 +58,19 @@ cargo run -- create \
 ```
 This prints:
 
-secret + salt
+#### Example Output
+```bash
+VaporPay ETH Commitment Generated!
 
-commitment
+Secret:     $SECRET
+Salt:       $SALT
+Commitment: $COMMITMET
+Amount:     0.0001 ETH
+Expiry:     2025-09-17 04:49:29 UTC (1d from now)
+Refundable: Yes
 
-Redeem URL + QR code
+Plus QR Code and URL
+```
 
 ```bash
 cargo run -- refund \
